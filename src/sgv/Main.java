@@ -3,6 +3,7 @@ package sgv;
 import sgv.modelo.Producto;
 import sgv.modelo.Venta;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -22,11 +23,29 @@ public class Main {
         System.out.print("Ingrese nombre del producto: ");
         String nombreProducto = scanner.nextLine();
 
-        System.out.print("Ingrese precio del producto: ");
-        double precio = scanner.nextDouble();
+        double precio;
+        int cantidad;
 
-        System.out.print("Ingrese cantidad: ");
-        int cantidad = scanner.nextInt();
+        try {
+            System.out.print("Ingrese precio del producto: ");
+            precio = scanner.nextDouble();
+
+            System.out.print("Ingrese cantidad: ");
+            cantidad = scanner.nextInt();
+
+        } catch (InputMismatchException e) {
+            System.out.println();
+            System.out.println("Error: el precio y la cantidad deben ser valores numericos validos.");
+            scanner.close();
+            return;
+        }
+
+        if (precio < 0 || cantidad < 0) {
+            System.out.println();
+            System.out.println("Error: el precio y la cantidad no pueden ser negativos.");
+            scanner.close();
+            return;
+        }
 
         // Crear objeto Producto
         Producto producto = new Producto(
