@@ -187,7 +187,7 @@ AA4
 ├── Integración
 ├── Mejoras
 └── Presentación
-
+```
 # 8. Requerimientos del sistema
 
 ## 8.1 Requerimientos funcionales
